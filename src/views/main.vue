@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
-const route = useRoute();
-
-const script = route?.query?.script ?? '';
+const router = useRouter();
 </script>
 
 <template>
-  <div>
-    <div id="target">{{ script }}</div>
-  </div>
+  <p><router-link to="/reflected-xss">reflected-xss</router-link></p>
+  <p><router-link to="/dom-based-xss">dom-based-xss</router-link></p>
 </template>
