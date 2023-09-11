@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
+import sanitizeHtml from 'sanitize-html';
+
 const route = useRoute();
 const router = useRouter();
 
-const script = route?.query?.script ?? '';
+// query를 sanitize한다.
+const script = sanitizeHtml(route?.query?.script) ?? '';
 </script>
 
 <template>

@@ -14,9 +14,9 @@ const router = createRouter({
       component: import('../views/reflected.vue'),
     },
     {
-      path: '/dom-based-xss',
-      name: 'dom-based',
-      component: import('../views/dom-based.vue'),
+      path: '/stored-xss',
+      name: 'stored',
+      component: import('../views/stored.vue'),
     },
   ],
 });

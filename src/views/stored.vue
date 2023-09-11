@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import sanitizeHtml from 'sanitize-html';
 
 const router = useRouter();
 let tagString = ref('');
 
 const loadData = () => {
-  tagString.value = `
+  // 태그 string을 sanitize해준다.
+  tagString.value = sanitizeHtml(
+    `
   <img src="/assets/computer-virus.png" onload="window.addEventListener('popstate', function () {
       alert('url changed'); 
   });" />
   <p>이제 뒤로가기 버튼을 누를때마다 팝업창이 뜹니다.</p>
-  `;
+  `,
+    {
+      allowedTags: false, // 모든 태그 허용
+    },
+  );
 };
 </script>
 
